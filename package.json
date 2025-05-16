@@ -1,6 +1,6 @@
 {
   "name": "use-tracked-state",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "viocha",
   "license": "MIT",
   "repository": {
@@ -14,22 +14,20 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "node": "./dist/index.js",
-        "default": "./dist/esm/index.js"
-      },
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
-  "unpkg": "dist/global/index.js",
-  "jsdelivr": "dist/global/index.js",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "clean": "bash -c 'rm -rf dist'",
-    "build": "npm run clean && rollup -c",
-    "test": "parcel test/test.html --open"
+    "build": "npm run clean && microbundle --globals react=React",
+    "test": "parcel test/test.html --dist-dir /tmp --open"
   },
   "peerDependencies": {
     "react": ">=17.0.0"
@@ -39,6 +37,8 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/react": "^19.1.4",
+    "microbundle": "^0.15.1",
+    "parcel": "^2.15.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "rollup": "^4.40.2",
