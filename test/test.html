@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> useTrackedState Demo</title>
+<style>
+  button,
+  label,
+  input:is([type="radio"], [type="checkbox"], [type="button"]) {
+    &:not([disabled]) {
+      cursor : pointer;
+
+      &:active {
+        user-select : none;
+      }
+    }
+  }
+
+  label,
+  button {
+    margin : 0 0.5em;
+  }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="module">
+  import {createRoot} from 'react-dom/client';
+  import {useTrackedState} from '../src/index.ts';
+
+  function App(){
+    const [state,latest]= useTrackedState(0);
+
+    return (
+        <main>
+          <h1> useTrackedState Demo</h1>
+          <p> state: {state.val} </p>
+
+          <button onClick={() => {
+            state.val++;
+            state.set(state.val+1)
+          }}>Increment twice by state</button>
+
+          <button onClick={() => {
+            latest.val++;
+            latest.set(latest.val+1)
+          }}>Increment twice by latest</button>
+        </main>
+    );
+  }
+
+  createRoot(document.getElementById('root')).render(<App/>);
+</script>
+
+</body>
+
+</html>

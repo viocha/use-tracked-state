@@ -1,0 +1,47 @@
+{
+  "name": "use-tracked-state",
+  "version": "1.0.0",
+  "author": "viocha",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viocha/use-tracked-state.git"
+  },
+  "type": "module",
+  "description": "A React hook for managing state with synchronized current and latest value accessors",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "node": "./dist/index.js",
+        "default": "./dist/esm/index.js"
+      },
+      "require": "./dist/index.cjs"
+    }
+  },
+  "unpkg": "dist/global/index.js",
+  "jsdelivr": "dist/global/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "bash -c 'rm -rf dist'",
+    "build": "npm run clean && rollup -c",
+    "test": "parcel test/test.html --open"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/react": "^19.1.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rollup": "^4.40.2",
+    "typescript": "^5.8.3"
+  }
+}
