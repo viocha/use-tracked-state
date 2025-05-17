@@ -32,22 +32,22 @@
   import {useTrackedState} from '../src/index.ts';
 
   function App(){
-    const [state,latest]= useTrackedState(0);
+    const count= useTrackedState(0);
 
     return (
         <main>
           <h1> useTrackedState Demo</h1>
-          <p> state: {state.val} </p>
+          <p> state: {count.val} </p>
 
           <button onClick={() => {
-            state.val++;
-            state.set(state.val+1)
-          }}>Increment twice by state</button>
+            count.val++;
+            count.set(count.val+1)
+          }}>val++ x2</button>
 
           <button onClick={() => {
-            latest.val++;
-            latest.set(latest.val+1)
-          }}>Increment twice by latest</button>
+            count.latest++;
+            count.setLatest(count.latest+1)
+          }}>latest++ x2</button>
         </main>
     );
   }

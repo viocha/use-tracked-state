@@ -26,8 +26,7 @@
   ],
   "scripts": {
     "clean": "bash -c 'rm -rf dist'",
-    "build": "npm run clean && microbundle --globals react=React",
-    "test": "parcel test/test.html --dist-dir /tmp --open"
+    "build": "npm run clean && microbundle --globals react=React"
   },
   "peerDependencies": {
     "react": ">=17.0.0"
@@ -41,7 +40,6 @@
     "parcel": "^2.15.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "rollup": "^4.40.2",
     "typescript": "^5.8.3"
   }
 }
