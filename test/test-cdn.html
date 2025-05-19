@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> useTrackedState Demo</title>
+<style>
+  button,
+  label,
+  input:is([type="radio"], [type="checkbox"], [type="button"]) {
+    &:not([disabled]) {
+      cursor : pointer;
+
+      &:active {
+        user-select : none;
+      }
+    }
+  }
+
+  label,
+  button {
+    margin : 0 0.5em;
+  }
+</style>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/use-tracked-state"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+  const {createRoot} = ReactDOM;
+  const {useTrackedState} = useTrackedState;
+
+  function App(){
+    const count= useTrackedState(0);
+
+    return (
+        <main>
+          <h1> useTrackedState Demo</h1>
+          <p> state: {count.val} </p>
+
+          <button onClick={() => {
+            count.val++;
+            count.set(count.val+1)
+          }}>val++ x2</button>
+
+          <button onClick={() => {
+            count.latest++;
+            count.setLatest(count.latest+1)
+          }}>latest++ x2</button>
+        </main>
+    );
+  }
+
+  createRoot(document.getElementById('root')).render(<App/>);
+</script>
+
+</body>
+
+</html>
